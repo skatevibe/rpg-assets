@@ -110,6 +110,10 @@ h1 {
     transition: .2s;
 }
 
+.copy {
+    opacity:0 !important;
+}
+
 .icon:hover .copy {
-    opacity: 1;
+    opacity:1 !important;
 }
