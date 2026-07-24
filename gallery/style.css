@@ -8,42 +8,56 @@
 }
 
 * {
-    box-sizing:border-box;
-  }
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
+    padding: 40px;
     background: #0d1117;
-    color: #e6edf3;
+    color: #fff;
     font-family: Inter, sans-serif;
 }
 
-.container {
-    width: min(1200px,90%);
-    margin: auto;
-    padding: 40px 0;
-}
-
 h1 {
-    margin-bottom: 32px;
-    font-family: "Astone Nouvea", sans-serif;
+    font-family: "Astone Nouvea";
+    font-size: 42px;
+}
+
+#back {
+    margin-bottom: 30px;
+    padding: 10px 16px;
+    background: #161b22;
+    color: #fff;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+#back:hover {
+    background: #21262d;
 }
 
 #gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+    grid-template-columns: repeat(auto-fill, 160px);
     gap: 20px;
-}
-
-#gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,140px);gap:20px;
 }
 
 .card {
     position: relative;
-    width: 140px;
+    width: 160px;
+    padding: 12px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
     cursor: pointer;
+    transition: .2s;
+}
+
+.card:hover {
+    border-color: #8b949e;
 }
 
 .card img {
@@ -52,40 +66,35 @@ h1 {
     height: 140px;
     object-fit: cover;
     border-radius: 8px;
-    transition:.2s;
-}
-
-.card:hover img {
-    opacity:.8;
+    margin: auto;
 }
 
 .name {
-    margin-top:8px;
-    font-size:13px;
-    text-align:center;
-    color:#8b949e;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #c9d1d9;
 }
 
 .copy {
-    position:absolute;
-    top:8px;
-    right:8px;
-    width:28px;
-    height:28px;
-    padding:0;
-    margin:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    background:rgba(13,17,23,.8);
-    color:white;
-    border:1px solid #30363d;
-    border-radius:6px;
-    cursor:pointer;
-    transition:.2s;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    background: rgba(13, 17, 23, .85);
+    color: #fff;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s;
 }
 
 .card:hover .copy {
-    opacity:1;
+    opacity: 1;
 }
