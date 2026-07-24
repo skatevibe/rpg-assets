@@ -2,11 +2,10 @@
 
 @font-face {
     font-family: "Astone Nouvea";
-    src: url("./fonts/Astone Nouvea.woff2") format("woff2");
+    src: url("./fonts/Astone-Nouvea.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
-
 
 * {
     box-sizing:border-box;
@@ -40,7 +39,7 @@ h1 {
     background: #161b22;
     border: 1px solid #30363d;
     border-radius: 12px;
-    padding: 16px;
+    padding: 12px;
     cursor: pointer;
     text-align: center;
     transition: .2s;
@@ -55,7 +54,7 @@ h1 {
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 
 .name {
