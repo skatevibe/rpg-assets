@@ -11,12 +11,10 @@
     box-sizing: border-box;
 }
 
-
-
 body {
     margin: 0;
     padding: 40px;
-    background: ##191010;
+    background: #191010;
     color: #d2d1c1;
     font-family: Inter, sans-serif;
 }
@@ -120,5 +118,5 @@ h1 {
 }
 
 .folder-icon {
-    width: 24px;
+    width: 48px;
 }
