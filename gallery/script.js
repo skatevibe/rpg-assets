@@ -1,6 +1,3 @@
-
-alert("NOUVEAU SCRIPT CHARGÉ");
-
 const USER="skatevibe";
 const REPO="rpg-assets";
 const ROOT="assets/icons";
