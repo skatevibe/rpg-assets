@@ -45,7 +45,7 @@ h1 {
     gap: 20px;
 }
 
-.card {
+.folder {
     position: relative;
     width: 160px;
     padding: 12px;
@@ -56,11 +56,11 @@ h1 {
     transition: .2s;
 }
 
-.card:hover {
+.folder:hover {
     border-color: #8b949e;
 }
 
-.card img {
+.folder img {
     display: block;
     width: 140px;
     height: 140px;
@@ -76,10 +76,30 @@ h1 {
     color: #c9d1d9;
 }
 
+.icon {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    cursor: pointer;
+}
+
+.icon img {
+    display: block;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: .2s;
+}
+
+.icon:hover img {
+    opacity: .8;
+}
+
 .copy {
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: 8px;
+    right: 8px;
     width: 30px;
     height: 30px;
     padding: 0;
@@ -95,6 +115,6 @@ h1 {
     transition: .2s;
 }
 
-.card:hover .copy {
+.icon:hover .copy {
     opacity: 1;
 }
