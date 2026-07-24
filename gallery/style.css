@@ -33,6 +33,10 @@ h1 {
     cursor: pointer;
     transition: .2s;
     color: #d2d1c1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 12px;
 }
 
 #back:hover {
