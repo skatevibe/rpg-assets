@@ -39,6 +39,10 @@ h1 {
     background: #21262d;
 }
 
+.hidden {
+    display: none;
+}
+
 #gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, 160px);
@@ -110,10 +114,6 @@ h1 {
     transition: .2s;
 }
 
-.copy {
-    opacity:0 !important;
-}
-
 .icon:hover .copy {
-    opacity:1 !important;
+    opacity: 1;
 }
