@@ -27,12 +27,12 @@ h1 {
 #back {
     margin-bottom: 30px;
     padding: 10px 16px;
-    background:#221616;
+    background:#d2d1c1;
     border:1px solid #0a0605;
     border-radius: 8px;
     cursor: pointer;
     transition: .2s;
-    color: #d2d1c1;
+    color: #221616;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
