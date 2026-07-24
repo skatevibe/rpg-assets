@@ -96,7 +96,7 @@ button:hover {
     border:1px solid #30363d;
     border-radius:8px;
     opacity:0;
-    transition:.2s;
+    transition:.2s; 
 }
 
 .card:hover .copy{
