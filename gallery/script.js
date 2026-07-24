@@ -14,19 +14,18 @@ async function getFolder(path){
     return await res.json();
 } 
 
-// affiche les dossiers
 function showFolders(folders){
     gallery.innerHTML="";
     folders.forEach(folder=>{
         const card=document.createElement("div");
-        card.className="card";
+        card.className="folder";
         card.innerHTML=`📁<div class="name">${folder.name}</div>`;
 
-        // entrer dans le dossier
         card.onclick=()=>{
             currentPath=folder.path;
             loadFolder(currentPath);
         };
+
         gallery.appendChild(card);
     });
 }
@@ -36,13 +35,13 @@ function showImages(images){
 
     images.forEach(image=>{
         const card=document.createElement("div");
-        card.className="card";
+        card.className="icon";
         card.innerHTML=`
             <img src="${image.download_url}" alt="">
             <button class="copy" title="Copier l'URL">⧉</button>
         `;
-        const button = card.querySelector(".copy");
-        button.onclick = (e)=>{
+        const button=card.querySelector(".copy");
+        button.onclick=(e)=>{
             e.stopPropagation();
             navigator.clipboard.writeText(image.download_url);
             button.textContent="✓";
