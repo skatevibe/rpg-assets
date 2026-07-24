@@ -19,7 +19,6 @@ function showFolders(folders){
     gallery.innerHTML="";
     folders.forEach(folder=>{
         const card=document.createElement("div");
-
         card.className="card";
         card.innerHTML=`📁<div class="name">${folder.name}</div>`;
 
@@ -32,7 +31,6 @@ function showFolders(folders){
     });
 }
 
-// affiche les images
 function showImages(images){
     gallery.innerHTML="";
 
@@ -41,21 +39,17 @@ function showImages(images){
         card.className="card";
         card.innerHTML=`
             <img src="${image.download_url}" alt="">
-            <button class="copy" title="Copier l'URL">
-                📋
-            </button>
+            <button class="copy" title="Copier l'URL">⧉</button>
         `;
-
-        // copie l'URL directe github de l'image
-        card.querySelector(".copy").onclick=(e)=>{
+        const button = card.querySelector(".copy");
+        button.onclick = (e)=>{
             e.stopPropagation();
             navigator.clipboard.writeText(image.download_url);
-            e.target.textContent="✓";
+            button.textContent="✓";
             setTimeout(()=>{
-                e.target.textContent="📋";
+                button.textContent="⧉";
             },1000);
         };
-
         gallery.appendChild(card);
     });
 }
@@ -68,7 +62,6 @@ async function loadFolder(path){
         f.type==="file" &&
         /\.(png|jpg|jpeg|webp|gif)$/i.test(f.name)
     );
-
     if(folders.length){
         showFolders(folders);
     }else{
