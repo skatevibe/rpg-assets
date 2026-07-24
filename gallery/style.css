@@ -2,13 +2,16 @@
 
 @font-face {
     font-family: "Astone Nouvea";
-    src: url("./Astone-Nouvea.woff") format("woff");
+    src: url("./fonts/Astone-Nouvea.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }
 
 
-* {box-sizing:border-box}
+* {
+    box-sizing:border-box;
+    font-family: Inter,sans-serif;
+  }
 
 body {
     margin: 0;
@@ -25,7 +28,7 @@ body {
 
 h1 {
     margin-bottom: 32px;
-    font-family: "Astone Nouvea", sans-serif;
+    font-family: "Astone Nouvea";
 }
 
 #gallery {
