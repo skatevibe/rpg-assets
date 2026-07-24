@@ -38,8 +38,8 @@ h1 {
 .card {
     background: #161b22;
     border: 1px solid #30363d;
-    border-radius: 12px;
-    padding: 12px;
+    border-radius: 16px;
+    padding: 8px;
     cursor: pointer;
     text-align: center;
     transition: .2s;
