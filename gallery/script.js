@@ -15,7 +15,7 @@ async function getFolder(path){
     const url=`https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
     const res=await fetch(url);
     return await res.json();
-}
+} 
 
 // affiche les dossiers
 function showFolders(folders){
