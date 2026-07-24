@@ -7,10 +7,6 @@
     font-style: normal;
 }
 
-body {
-    background: red !important;
-}
-
 * {
     box-sizing:border-box;
   }
@@ -20,6 +16,10 @@ body {
     background: #0d1117;
     color: #e6edf3;
     font-family: Inter, sans-serif;
+}
+
+body {
+    background: red !important;
 }
 
 .container {
