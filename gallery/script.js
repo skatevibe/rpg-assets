@@ -7,7 +7,7 @@ const back=document.getElementById("back");
 
 let currentPath=ROOT;
 
-// récupérer le contenu d'un dossier gitHub
+// récupérer le contenu d'un dossier github
 async function getFolder(path){
     const url=`https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
     const res=await fetch(url);
@@ -23,7 +23,7 @@ function showFolders(folders){
         card.className="card";
         card.innerHTML=`📁<div class="name">${folder.name}</div>`;
 
-        // Entre dans le dossier au clic
+        // entrer dans le dossier
         card.onclick=()=>{
             currentPath=folder.path;
             loadFolder(currentPath);
@@ -32,8 +32,7 @@ function showFolders(folders){
     });
 }
 
-
-// Affiche les images
+// affiche les images
 function showImages(images){
     gallery.innerHTML="";
 
@@ -41,9 +40,21 @@ function showImages(images){
         const card=document.createElement("div");
         card.className="card";
         card.innerHTML=`
-            <img src="${image.download_url}">
-            <div class="name">${image.name}</div>
+            <img src="${image.download_url}" alt="">
+            <button class="copy" title="Copier l'URL">
+                📋
+            </button>
         `;
+
+        // copie l'URL directe github de l'image
+        card.querySelector(".copy").onclick=(e)=>{
+            e.stopPropagation();
+            navigator.clipboard.writeText(image.download_url);
+            e.target.textContent="✓";
+            setTimeout(()=>{
+                e.target.textContent="📋";
+            },1000);
+        };
 
         gallery.appendChild(card);
     });
