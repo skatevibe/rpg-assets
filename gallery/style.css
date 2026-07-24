@@ -60,16 +60,11 @@ h1 {
     border-color: #8b949e;
 }
 
-.folder img {
-    display: block;
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin: auto;
+.folder::first-letter {
+    font-size: 50px;
 }
 
-.name {
+.folder .name {
     margin-top: 10px;
     text-align: center;
     font-size: 14px;
@@ -107,7 +102,7 @@ h1 {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    background: rgba(13, 17, 23, .85);
+    background: rgba(13,17,23,.85);
     color: #fff;
     border: 1px solid #30363d;
     border-radius: 8px;
