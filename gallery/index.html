@@ -1,36 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPG Assets</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<div class="container">
+    <h1>RPG Assets</h1>
+    <!-- caché au départ -->
+    <button id="back" class="hidden">
+        ← Retour
+    </button>
+    <!-- pour afficher les dossiers et les images -->
+    <div id="gallery"></div>
+</div>
 
-    <div class="container">
-
-        <header>
-            <h1>RPG Assets</h1>
-
-            <input
-                id="search"
-                type="text"
-                placeholder="Rechercher une icône..."
-            >
-        </header>
-
-        <main id="gallery"></main>
-
-    </div>
-
-    <div id="lightbox" class="hidden">
-        <img id="lightbox-image" alt="">
-    </div>
-
-    <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>

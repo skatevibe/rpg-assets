@@ -1,95 +1,81 @@
-const USER = "skatevibe";
-const REPO = "rpg-assets";
+const USER="skatevibe";
+const REPO="rpg-assets";
+const ROOT="assets/icons";
 
-const FOLDER = "assets/icons";
+const gallery=document.getElementById("gallery");
+const back=document.getElementById("back");
 
-const gallery = document.getElementById("gallery");
-const search = document.getElementById("search");
+let currentPath=ROOT;
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightbox-image");
+// récupérer le contenu d'un dossier gitHub
+async function getFolder(path){
+    const url=`https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
+    const res=await fetch(url);
+    return await res.json();
+}
 
-let images = [];
+// affiche les dossiers
+function showFolders(folders){
+    gallery.innerHTML="";
+    folders.forEach(folder=>{
+        const card=document.createElement("div");
 
-async function getImages(path = FOLDER) {
-    const url = `https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
+        card.className="card";
+        card.innerHTML=`📁<div class="name">${folder.name}</div>`;
 
-    const response = await fetch(url);
-    const files = await response.json();
-
-    let results = [];
-
-    for (const file of files) {
-
-        if (file.type === "file" && /\.(png|jpg|jpeg|webp|gif)$/i.test(file.name)) {
-            results.push(file);
-        }
-
-        if (file.type === "dir") {
-            const folderImages = await getImages(file.path);
-            results = results.concat(folderImages);
-        }
-    }
-
-    return results;
+        // Entre dans le dossier au clic
+        card.onclick=()=>{
+            currentPath=folder.path;
+            loadFolder(currentPath);
+        };
+        gallery.appendChild(card);
+    });
 }
 
 
-function displayImages(list) {
+// Affiche les images
+function showImages(images){
+    gallery.innerHTML="";
 
-    gallery.innerHTML = "";
-
-    list.forEach(file => {
-
-        const card = document.createElement("div");
-        card.className = "card";
-
-        card.innerHTML = `
-            <img src="${file.download_url}" alt="${file.name}">
-            <div class="filename">${file.name}</div>
+    images.forEach(image=>{
+        const card=document.createElement("div");
+        card.className="card";
+        card.innerHTML=`
+            <img src="${image.download_url}">
+            <div class="name">${image.name}</div>
         `;
 
-        const image = card.querySelector("img");
-
-        image.addEventListener("click", () => {
-            lightboxImage.src = file.download_url;
-            lightbox.classList.remove("hidden");
-        });
-
         gallery.appendChild(card);
-
     });
-
 }
 
-
-search.addEventListener("input", () => {
-
-    const value = search.value.toLowerCase();
-
-    const filtered = images.filter(image =>
-        image.name.toLowerCase().includes(value)
+// charge un dossier
+async function loadFolder(path){
+    const files=await getFolder(path);
+    const folders=files.filter(f=>f.type==="dir");
+    const images=files.filter(f=>
+        f.type==="file" &&
+        /\.(png|jpg|jpeg|webp|gif)$/i.test(f.name)
     );
 
-    displayImages(filtered);
+    if(folders.length){
+        showFolders(folders);
+    }else{
+        showImages(images);
+    }
 
-});
-
-
-lightbox.addEventListener("click", () => {
-    lightbox.classList.add("hidden");
-});
-
-
-async function init() {
-
-    gallery.innerHTML = "<p>Chargement...</p>";
-
-    images = await getImages();
-
-    displayImages(images);
-
+    // affiche le bouton retour si pas à la racine
+    if(path!==ROOT){
+        back.classList.remove("hidden");
+    }
 }
 
+// back to homepage 
+back.onclick=()=>{
+    currentPath=ROOT;
+    back.classList.add("hidden");
+    loadFolder(ROOT);
+};
 
-init();
+// lance  la galerie
+loadFolder(ROOT);
