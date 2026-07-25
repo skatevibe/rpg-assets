@@ -22,7 +22,7 @@ async function getFolder(path){
 } 
 
 function showFolders(folders){
-    gallery.innerHTML="";
+    
     folders.forEach(folder=>{
         const card=document.createElement("div");
         card.className="folder";
@@ -32,6 +32,7 @@ function showFolders(folders){
 	`;
 
         card.onclick=()=>{
+            history.push(currentPath);
             currentPath=folder.path;
             loadFolder(currentPath);
         };
@@ -41,7 +42,6 @@ function showFolders(folders){
 }
 
 function showImages(images){
-    gallery.innerHTML="";
 
     images.forEach(image=>{
         const card=document.createElement("div");
@@ -51,6 +51,14 @@ function showImages(images){
             <button class="copy" title="Copier l'URL">⧉</button>
         `;
         const button=card.querySelector(".copy");
+
+        const img = card.querySelector("img");
+
+        img.onclick = ()=>{
+            currentImageIndex = images.indexOf(image);
+            openPreview();
+        };
+
         button.onclick=(e)=>{
             e.stopPropagation();
             navigator.clipboard.writeText(image.download_url);
@@ -65,77 +73,17 @@ function showImages(images){
 
 // charge un dossier
 async function loadFolder(path){
-    const files=await getFolder(path);
-    const folders=files.filter(f=>f.type==="dir");
-    const images=files.filter(f=>
-        f.type==="file" &&
-        /\.(png|jpg|jpeg|webp|gif)$/i.test(f.name)
-    );
-    if(folders.length){
-        showFolders(folders);
-    }else{
-        showImages(images);
-    }
-
-    // affiche le bouton retour si pas à la racine
-    if(path !== ROOT){
-        back.classList.remove("hidden");
-    }else{
-        back.classList.add("hidden");
-    }
-
-    // fil d'ariane
-    updateBreadcrumb(path);
-}
-
-// back to homepage 
-back.onclick=()=>{
-    currentPath=ROOT;
-    back.classList.add("hidden");
-    loadFolder(ROOT);
-};
-
-// ajoute le preview
-
-const preview = document.getElementById("preview");
-const previewImage = document.getElementById("previewImage");
-
-function openPreview(){
-    if(!preview || !previewImage) return;
-
-    previewImage.src = getImageUrl(currentImages[currentImageIndex].path);
-
-    preview.classList.remove("hidden", "hide");
-
-    requestAnimationFrame(() => {
-            openPreview();
-        };
-
-        button.onclick = (e)=>{
-            e.stopPropagation();
-            navigator.clipboard.writeText(url);
-            button.textContent = "✓";
-            setTimeout(()=>{
-                button.textContent = "⧉";
-            },1000);
-        };
-        gallery.appendChild(card);
-    });
-}
-
-// charge un dossier
-async function loadFolder(path){
     gallery.innerHTML = "";
 
     const files = await getFolder(path);
 
     const folders = files.filter(
-        f => f.type === "tree"
+        f => f.type === "dir"
     );
 
     const images = files.filter(
         f =>
-        f.type === "blob" &&
+        f.type === "file" &&
         /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(f.name)
     );
     currentImages = images;
@@ -173,7 +121,7 @@ const previewImage = document.getElementById("previewImage");
 function openPreview(){
     if(!preview || !previewImage) return;
 
-    previewImage.src = getImageUrl(currentImages[currentImageIndex].path);
+    previewImage.src = currentImages[currentImageIndex].download_url;
 
     preview.classList.remove("hidden", "hide");
 
@@ -224,7 +172,7 @@ function showImage(index){
     }
 
     currentImageIndex = index;
-    previewImage.src = getImageUrl(currentImages[currentImageIndex].path);
+    previewImage.src = currentImages[currentImageIndex].download_url;
 }
 
 // ajout fil d'ariane
