@@ -4,19 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>skate vibe</title>
+    <title>titre de votre onglet</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 <div class="container">
-    <h1>sv's place ও</h1> 
+    <h1>Ma galerie</h1> 
     <!-- caché au départ -->
-    <button id="back" class="hidden">
-        🠘 Retour
-    </button>
+    <div class="toolbar">
+        <button id="back" class="hidden">
+            ← Retour
+        </button>
+
+        <!-- fil d'ariane -->
+        <span id="breadcrumb"></span>
+    </div>
     <!-- pour afficher les dossiers et les images -->
     <div id="gallery"></div>
+</div>
+
+<div id="preview" class="preview hidden">
+    <div class="preview-content">
+        <button id="prevImage" class="nav prev">←</button>
+
+        <img id="previewImage" src="" alt="">
+
+        <button id="nextImage" class="nav next">→</button>
+    </div>
 </div>
 
 <script src="./script.js"></script>
