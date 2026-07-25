@@ -94,7 +94,7 @@ h1 {
 }
 
 .folder:hover {
-    border-color:#var(--bg4);
+    border-color: var(--bg4);
 }
 
 .folder .name {
