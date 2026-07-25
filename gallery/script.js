@@ -22,7 +22,7 @@ async function getFolder(path){
 } 
 
 function showFolders(folders){
-    
+
     folders.forEach(folder=>{
         const card=document.createElement("div");
         card.className="folder";
@@ -185,7 +185,7 @@ function updateBreadcrumb(path){
         parts.shift();
     }
 
-    breadcrumb.textContent = parts.length ? parts.join(" / ") : "Accueil";
+    breadcrumb.textContent = parts.length ? parts.join(" / ") : "accueil";
 }
 
 

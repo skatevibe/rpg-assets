@@ -13,7 +13,6 @@
     --bg3: #3a3a55;
     --bg4: #616a75;
     --tx1: #d2d1c1;
-
 }
 
 * {
@@ -49,7 +48,6 @@ h1 {
 }
 
 #back {
-    margin-bottom: 30px;
     padding: 10px 16px;
     background: var(--tx1);
     border:1px solid #0a0605;
@@ -105,7 +103,7 @@ h1 {
 }
 
 .folder-icon {
-    width: 48px;
+    width: 36px;
 }
 
 .icon {
