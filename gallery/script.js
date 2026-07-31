@@ -1,5 +1,5 @@
 const USER="skatevibe";
-const REPO="rpg-assets-template";
+const REPO="rpg-assets";
 const ROOT="assets";
  
 const gallery=document.getElementById("gallery");
